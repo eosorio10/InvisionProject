@@ -11,7 +11,7 @@ public class windowTest
         JFrame frame = new JFrame("INVISION");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel textLabel = new JLabel("I'm text on the page",SwingConstants.CENTER);
+        JLabel textLabel = new JLabel("Object Page",SwingConstants.CENTER);
         textLabel.setPreferredSize(new DimensionUIResource(1500, 800));
         frame.getContentPane().add(textLabel, BorderLayout.CENTER);
 
