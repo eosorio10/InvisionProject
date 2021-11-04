@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+  <title> Invision </title>
+  <link rel = "stylesheet" href = "/assets/dcode.css">
+  <link rel = "shortcut icon" href = "/assets/favicon.ico">
+  <meta name = "viewport" content = "with=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
+  <style>
+
+    h1 {text-align: center;}
+    body {background-color: #a4a5a6;}
+
+    .navbar {
+      position: fixed;
+      top: 0px;
+      left: -200px;
+      width: 200px;
+      height: 100%;
+      background: #71858a;
+      border-right: 2px solid #6f8085;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    }
+
+    .navbar--open{
+      left: 0;
+      opacity: 1;
+
+    }
+
+    .navbar__link{
+      display: flex;
+      align-items: center;
+      background: #6f8085;
+      color: #ffffff;
+      padding: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #71858a
+
+    }
+
+    .navbar__link .material-icons {
+      margin-right: 12px;
+
+    }
+
+    .navbar__link:activate{
+      background: #007d65;
+
+    } 
+    .menu_dropper{
+      position: fixed;
+      top: 1px;
+      background: #71858a;
+      
+  
+    }
+    
+    
+    
+    </style>
+
+  <body>
+    
+
+    <h1>Invision</h1>
+
+    <button class = "menu_dropper" id ="dropper" onclick = "this.style.visibility= 'hidden'; toggleNav()" >
+      <span class = "material-icons">list</span>
+    </button>
+    <div class= "navbar">
+
+
+      <a href = "#" class = "navbar__link" onclick = "toggleNav()">
+        <span class = "material-icons">close</span>Close
+        </a>
+      <a href = "#" class = "navbar__link">
+        <span class = "material-icons">home</span>home
+        </a>
+
+      <a href = "#" class = "navbar__link">
+        <span class = "material-icons">login</span>Login
+        </a>
+
+      <a href = "#" class = "navbar__link">
+        <span class = "material-icons">photo_library</span>Photos
+        </a>
+    
+       <a href = "#" class = "navbar__link">
+        <span class = "material-icons">get_app</span>Upload photo
+       
+        </a>
+
+
+
+
+    <script>
+    function toggleNav(){
+      document.querySelector(".navbar").classList.toggle("navbar--open");
+
+      
+    }
+
+    src="./renderer.js"
+    
+    </script>
+  </body>
+</html>
