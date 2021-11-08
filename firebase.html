@@ -21,6 +21,10 @@
             <p id="uploading"></p>
             <progress value="0" max="100" id="progress"></progress>
         </div>
+        <script>
+            import { initializeApp } from "firebase/app";
+            import { getAnalytics } from "firebase/analytics";
+        </script>
 
         <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
@@ -38,6 +42,7 @@
             };
 
             const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
 
         </script>
 
@@ -72,13 +77,13 @@
                             },
                     
                             function error() {
-                                alert("error uploading file");
+                                alert("Error Uploading File");
                             },
                     
                             function complete() {
                                 document.getElementById(
-                                    "uploading"
-                                ).innerHTML += `${files[i].name} uploaded <br />`;
+                                    "Uploading"
+                                ).innerHTML += `${files[i].name} Uploaded <br />`;
                             }
                         );
                     }
@@ -100,10 +105,9 @@
                     console.log(url);
                     })
                     .catch(function(error) {
-                    console.log("error encountered");
+                    console.log("Error Encountered");
                     });
             }
         </script>
-        </body>
     </body>
 </html>
