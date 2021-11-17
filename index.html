@@ -4,68 +4,13 @@
 
 
   <title> Invision </title>
-  <link rel = "stylesheet" href = "/assets/dcode.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
   <link rel = "shortcut icon" href = "/assets/favicon.ico">
   <meta name = "viewport" content = "with=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
-  <style>
-
-    h1 {text-align: center;}
-    body {background-color: #a4a5a6;}
-
-    .navbar {
-      position: fixed;
-      top: 0px;
-      left: -200px;
-      width: 200px;
-      height: 100%;
-      background: #71858a;
-      border-right: 2px solid #6f8085;
-      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
-      opacity: 0;
-      transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
-    }
-
-    .navbar--open{
-      left: 0;
-      opacity: 1;
-
-    }
-
-    .navbar__link{
-      display: flex;
-      align-items: center;
-      background: #6f8085;
-      color: #ffffff;
-      padding: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.85rem;
-      border-bottom: 1px solid #71858a
-
-    }
-
-    .navbar__link .material-icons {
-      margin-right: 12px;
-
-    }
-
-    .navbar__link:activate{
-      background: #007d65;
-
-    } 
-    .menu_dropper{
-      position: fixed;
-      top: 1px;
-      background: #71858a;
-      
   
-    }
-    
-    
-    
-    </style>
-
+  
   <body>
     
 
@@ -77,7 +22,7 @@
     <div class= "navbar">
 
 
-      <a href = "#" class = "navbar__link" onclick = "toggleNav()">
+      <a href = "#" class = "navbar__link" onclick = "dropper.style.visibility= 'visible'; toggleNav()" >
         <span class = "material-icons">close</span>Close
         </a>
       <a href = "#" class = "navbar__link">
@@ -92,7 +37,7 @@
         <span class = "material-icons">photo_library</span>Photos
         </a>
     
-       <a href = "#" class = "navbar__link">
+       <a href = "#" class = "navbar__link" id = "send">
         <span class = "material-icons">get_app</span>Upload photo
        
         </a>
@@ -110,5 +55,117 @@
     src="./renderer.js"
     
     </script>
+
+<script>
+  import { initializeApp } from "firebase/app";
+  import { getAnalytics } from "firebase/analytics";
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+
+<script>
+  // Firebase Configuration
+  var firebaseConfig = {
+  apiKey: "AIzaSyDynn0-w2p597bU6lQ-3c1F-3tn70-HQd0",
+  authDomain: "invision-87460.firebaseapp.com",
+  databaseURL: "https://invision-87460.appspot.com",
+  projectId: "invision-87460",
+  storageBucket: "invision-87460.appspot.com",
+  messagingSenderId: "787564970319",
+  appId: "1:787564970319:web:dd6a0e28081df14bf3453a",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+</script>
+
+<script>
+  var files = [];
+  document.getElementById("files").addEventListener("change", function(e) {
+      files = e.target.files;
+  });
+</script>
+
+<script>
+  document.getElementById("send").addEventListener("click", function() {
+      //checks if files are selected
+      if (files.length != 0) {
+
+          //Loops through all the selected files
+          for (let i = 0; i < files.length; i++) {
+
+              //create a storage reference
+              var storage = firebase.storage().ref(files[i].name);
+          
+              //upload file
+              var upload = storage.put(files[i]);
+          
+              //update progress bar
+              upload.on(
+                  "state_changed",
+                  function progress(snapshot) {
+                      var percentage =
+                          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                      document.getElementById("progress").value = percentage;
+                  },
+          
+                  function error() {
+                      alert("Error Uploading File");
+                  },
+          
+                  function complete() {
+                      document.getElementById(
+                          "Uploading"
+                      ).innerHTML += `${files[i].name} Uploaded <br />`;
+                  }
+              );
+          }
+      } else {
+          alert("No file chosen");
+      }
+  });
+</script>
+
+<script>
+  function getFileUrl(filename) {
+      //create a storage reference
+      var storage = firebase.storage().ref(filename);
+      
+      //get file url
+      storage
+          .getDownloadURL()
+          .then(function(url) {
+          console.log(url);
+          })
+          .catch(function(error) {
+          console.log("Error Encountered");
+          });
+  }
+</script>
+
+
+
+<script>
+    
+  function changeBg(){
+      const images = [
+          'url("4.png")',
+          'url("5.png")',
+          'url("6.png")',
+          'url("7.png")',
+          'url("8.png")',
+          'url("9.png")',
+          'url("10.png")',
+          'url("11.png")',
+      ]
+      const body = document.querySelector('body')
+      const bg = images [Math.floor(Math.random() * images.length)];
+      body.style.backgroundImage= bg;
+  }
+
+  setInterval(changeBg, 8000)
+</script>
   </body>
 </html>
