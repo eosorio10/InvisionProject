@@ -23,17 +23,27 @@ body
 
 }
 
-section h2
+h1 {
+  color: #ffffff;
+  align-items: center;
+  font-size: 500%;
+  font-style: oblique;
+ 
+  
+}
+
+h2
 
 {
 font-size: 3vw;
-color: #000;
+color: rgb(42, 9, 80);
 background: rgb(184, 201, 198);
 padding: 0px 10px;
 mix-blend-mode: screen;
+
 }
 
-h1 {text-align: center;}
+
     
 
     .navbar {
@@ -42,11 +52,12 @@ h1 {text-align: center;}
       left: -200px;
       width: 200px;
       height: 100%;
-      background: #71858a;
+      background: #e7fafc;
       border-right: 2px solid #6f8085;
       box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
       opacity: 0;
       transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+
     }
 
     .navbar--open{
@@ -58,15 +69,24 @@ h1 {text-align: center;}
     .navbar__link{
       display: flex;
       align-items: center;
-      background: #6f8085;
-      color: #ffffff;
+      background: #ffffff;
+      color: #000000;
       padding: 12px;
       text-decoration: none;
       font-weight: bold;
       font-size: 0.85rem;
-      border-bottom: 1px solid #71858a
+      border-bottom: 1px solid #ffffff
+      
+      
 
     }
+    .navbar__link:hover {
+    font-size: 115%;
+    color: rgba(212, 24, 24, 0.849);
+    text-decoration: underline;
+
+    }
+     
 
     .navbar__link .material-icons {
       margin-right: 12px;
@@ -74,14 +94,21 @@ h1 {text-align: center;}
     }
 
     .navbar__link:activate{
-      background: #007d65;
+      background: #ffffff;
 
     } 
     .menu_dropper{
       position: fixed;
       top: 1px;
       left: 10px;
-      background: #71858a;
+      background: #cacaca;
       
   
     }
+
+    div {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+    }
+    
