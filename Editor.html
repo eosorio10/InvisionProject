@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+  <title> Invision </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel = "shortcut icon" href = "/assets/favicon.ico">
+  <meta name = "viewport" content = "with=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
+  
+  
+  <body>
+    
+
+    <h1>Invision</h1>
+
+    <button class = "menu_dropper" id ="dropper" onclick = "this.style.visibility= 'hidden'; toggleNav()" >
+      <span class = "material-icons">view_stream</span>
+    </button>
+    <div class= "navbar">
+
+
+      <a href = "#" class = "navbar__link" onclick = "dropper.style.visibility= 'visible'; toggleNav()" >
+        <span class = "material-icons">close</span>Close
+        </a>
+
+      <a href = "#" class = "navbar__link">
+        <span class = "material-icons">home</span>Home
+        </a>
+
+        <a href = "#" class = "navbar__link">
+          <span class = "material-icons">build</span>Project
+           </a>
+
+     <a href = "#" class = "navbar__link">
+        <span class = "material-icons">build</span>Tool 1
+        </a>
+
+      <a href = "#" class = "navbar__link">
+        <span class = "material-icons">build</span>Tool 2 
+        </a>
+
+        <a href = "#" class = "navbar__link">
+          <span class = "material-icons">build</span>Tool 3 
+          </a>
+
+   
+
+
+
+
+    <script>
+    function toggleNav(){
+      document.querySelector(".navbar").classList.toggle("navbar--open");
+
+      
+    }
+
+    src="./renderer.js"
+    
+    </script>
+ 
+<script>
+    
+  function changeBg(){
+      const images = [
+          'url("4.png")',
+          'url("5.png")',
+          'url("6.png")',
+          'url("7.png")',
+          'url("8.png")',
+          'url("9.png")',
+          'url("10.png")',
+          'url("11.png")',
+      ]
+      const body = document.querySelector('body')
+      const bg = images [Math.floor(Math.random() * images.length)];
+      body.style.backgroundImage= bg;
+  }
+
+  setInterval(changeBg, 8000)
+
+</script>
+ 
+<script>
+    function opnfirebase(){
+    window.location="Firebase.html";
+}
+</script>
+
+<script>
+  function opneditor(){
+  window.location="Editor.html";
+}
+</script>
+
+  </body>
+</html>
